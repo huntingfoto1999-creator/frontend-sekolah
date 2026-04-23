@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Admin | SD Harapan Sungailiat</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="login-body premium-login-body">
+
+<div class="login-premium-wrapper">
+
+    <div class="login-premium-left">
+        <div class="login-premium-badge">
+            <i class="fa fa-shield-halved"></i>
+            <span>Portal Administrasi Sekolah</span>
+        </div>
+
+        <h1>Selamat Datang di Sistem Admin SD Harapan</h1>
+        <p>
+            Kelola berita, guru, siswa, galeri, dan pesan sekolah
+            melalui dashboard yang aman, modern, dan mudah digunakan.
+        </p>
+
+        <div class="login-feature-list">
+            <div class="login-feature-item">
+                <i class="fa fa-newspaper"></i>
+                <span>Kelola berita dan pengumuman sekolah</span>
+            </div>
+            <div class="login-feature-item">
+                <i class="fa fa-chalkboard-user"></i>
+                <span>Manajemen data guru dan tenaga pendidik</span>
+            </div>
+            <div class="login-feature-item">
+                <i class="fa fa-user-graduate"></i>
+                <span>Kelola data siswa dengan akses terstruktur</span>
+            </div>
+            <div class="login-feature-item">
+                <i class="fa fa-envelope-open-text"></i>
+                <span>Pantau pesan masuk dari website sekolah</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="login-premium-right">
+        <div class="login-box premium-login-box fade-in">
+            <div class="premium-login-top">
+                <img src="img/logo.png" class="login-logo" alt="Logo SD Harapan">
+                <div>
+                    <h2>Admin Portal</h2>
+                    <p>SD Harapan Sungailiat</p>
+                </div>
+            </div>
+
+            <div class="premium-login-divider"></div>
+
+            <div class="input-group premium-input-group">
+                <i class="fa fa-user"></i>
+                <input type="text" id="user" placeholder="Masukkan username">
+            </div>
+
+            <div class="input-group password-group premium-input-group">
+                <i class="fa fa-lock"></i>
+                <input type="password" id="pass" placeholder="Masukkan password">
+                <i class="fa fa-eye toggle-pass" onclick="togglePassword()"></i>
+            </div>
+
+            <button onclick="login()" id="btnLogin" class="premium-login-btn">
+                <i class="fa fa-right-to-bracket"></i> Login Sekarang
+            </button>
+
+            <div class="premium-login-note">
+                <i class="fa fa-circle-info"></i>
+                <span>Gunakan akun yang telah terdaftar untuk mengakses dashboard.</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="js/login.js"></script>
+</body>
+</html>

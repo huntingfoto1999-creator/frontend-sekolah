@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Guru</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:,">
+</head>
+<body class="school-admin-body">
+
+<script>
+if (localStorage.getItem("login") !== "true") {
+    location.href = "login.html";
+}
+
+if (localStorage.getItem("username") !== "guru" && localStorage.getItem("role") !== "guru") {
+    location.href = "admin.html";
+}
+</script>
+
+<div class="school-admin-layout guru-layout">
+    <aside class="school-sidebar guru-sidebar">
+        <div class="school-logo-box">
+            <div class="school-logo-icon">👨‍🏫</div>
+            <div>
+                <h2>Panel Guru</h2>
+                <p>SD Harapan</p>
+            </div>
+        </div>
+
+        <ul class="school-menu guru-menu">
+            <li onclick="showTab('dashboard', event)">Dashboard</li>
+            <li onclick="showTab('siswa', event)">🎓 Data Siswa</li>
+            <li onclick="showTab('absensi', event)">📝 Absensi Siswa</li>
+            <li onclick="showTab('profil', event)">👤 Profil Saya</li>
+            <li onclick="logout()">🚪 Logout</li>
+        </ul>
+    </aside>
+
+    <main class="school-main guru-main">
+        <div class="school-topbar premium-guru-topbar">
+    <div class="premium-guru-topbar-left">
+        <div class="premium-guru-topbar-text">
+            <h1>Dashboard Guru</h1>
+            <p>Kelola data siswa, absensi, dan profil akun dengan tampilan premium</p>
+        </div>
+    </div>
+
+    <div class="premium-guru-topbar-right">
+        <div class="premium-guru-topbar-badge">
+            <span class="status-dot green"></span>
+            <span>Aktif</span>
+        </div>
+
+        <div class="school-admin-info premium-guru-admin-info">
+            <div class="school-admin-avatar">G</div>
+            <div>
+                <strong id="namaLogin">Guru</strong>
+                <small id="guruRoleTopbar">Akses pengelolaan siswa</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- DASHBOARD -->
+      <section id="dashboard" class="school-section">
+    <div class="premium-hero-admin guru-premium-hero">
+        <div class="premium-hero-left">
+            <span class="premium-chip">Panel Wali Kelas / Guru</span>
+            <h2>Dashboard Guru Premium</h2>
+            <p>
+                Pantau data siswa, absensi, dan aktivitas utama kelas Anda
+                dari satu halaman yang lebih modern, rapi, dan profesional.
+            </p>
+
+            <div class="premium-hero-actions">
+                <button onclick="showTab('siswa', event)">Data Siswa</button>
+                <button onclick="showTab('absensi', event)">Absensi Siswa</button>
+                <button onclick="showTab('profil', event)">Profil Saya</button>
+            </div>
+        </div>
+
+        <div class="premium-hero-right">
+            <div class="premium-hero-mini-card">
+                <span>Status Akun</span>
+                <strong>Aktif</strong>
+            </div>
+            <div class="premium-hero-mini-card">
+                <span>Role</span>
+                <strong id="dashboardRoleGuru">guru</strong>
+            </div>
+            <div class="premium-hero-mini-card">
+                <span>Kelas Wali</span>
+                <strong id="dashboardKelasInfo">Belum ada kelas</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="school-stats-grid premium-stats-grid">
+        <div class="school-stat-card premium-stat-card emerald">
+            <div class="school-stat-icon">🎓</div>
+            <div>
+                <h3 id="totalSiswa">0</h3>
+                <p>Total Siswa</p>
+            </div>
+        </div>
+
+        <div class="school-stat-card premium-stat-card blue">
+            <div class="school-stat-icon">👨‍🏫</div>
+            <div>
+                <h3 id="guruRole">Guru</h3>
+                <p>Role Login</p>
+            </div>
+        </div>
+
+        <div class="school-stat-card premium-stat-card amber">
+            <div class="school-stat-icon">🏫</div>
+            <div>
+                <h3 id="dashboardKelasCount">0</h3>
+                <p>Total Kelas Akses</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="premium-dashboard-grid guru-dashboard-grid">
+        <div class="school-box premium-dashboard-box premium-quick-box">
+            <div class="school-box-head">
+                <h3>Menu Cepat</h3>
+            </div>
+
+            <div class="premium-shortcut-grid">
+                <button onclick="showTab('siswa', event)">🎓 Data Siswa</button>
+                <button onclick="showTab('absensi', event)">📝 Absensi Siswa</button>
+                <button onclick="showTab('profil', event)">👤 Profil Saya</button>
+            </div>
+        </div>
+
+        <div class="school-box premium-dashboard-box">
+            <div class="school-box-head">
+                <h3>Informasi Akun</h3>
+            </div>
+
+            <div class="premium-system-list">
+                <div class="premium-system-item">
+                    <span class="status-dot blue"></span>
+                    <div>
+                        <strong id="dashboardNamaGuru">Guru</strong>
+                        <small>Nama pengguna aktif</small>
+                    </div>
+                </div>
+
+                <div class="premium-system-item">
+                    <span class="status-dot green"></span>
+                    <div>
+                        <strong id="dashboardRoleGuruText">guru</strong>
+                        <small>Hak akses akun</small>
+                    </div>
+                </div>
+
+                <div class="premium-system-item">
+                    <span class="status-dot orange"></span>
+                    <div>
+                        <strong id="dashboardKelasInfoText">Belum ada kelas</strong>
+                        <small>Kelas yang dikelola</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="school-box premium-dashboard-box">
+            <div class="school-box-head">
+                <h3>Petunjuk Cepat</h3>
+            </div>
+
+            <div class="list-box premium-list-box">
+                <p>Gunakan menu <strong>Data Siswa</strong> untuk melihat siswa sesuai kelas yang Anda kelola.</p>
+                <p>Gunakan menu <strong>Absensi Siswa</strong> untuk input, rekap, export, dan print absensi.</p>
+                <p>Gunakan menu <strong>Profil Saya</strong> untuk update nama akun dan password.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- DATA SISWA -->
+        <section id="siswaTab" class="school-section" style="display:none;">
+    <div class="form-box">
+        <h2>Filter Data Siswa</h2>
+        <select id="filterKelasGuru" onchange="filterSiswaByKelasGuru()">
+            <option value="">Semua Kelas</option>
+        </select>
+    </div>
+
+    <div class="list-box">
+        <h2>Daftar Siswa</h2>
+        <div id="list-siswa"></div>
+    </div>
+</section>
+
+        <!-- ABSENSI -->
+        <section id="absensiTab" class="school-section" style="display:none;">
+    <div class="school-section-head">
+        <h2>Absensi Siswa</h2>
+        <p>Input, rekap, dan cetak absensi siswa berdasarkan kelas dan tanggal</p>
+    </div>
+
+    <!-- FILTER HARIAN -->
+    <div class="school-box absensi-premium-box" style="margin-bottom:20px;">
+        <div class="school-box-head">
+            <h3>Filter Absensi Harian</h3>
+        </div>
+
+        <div class="form-box absensi-filter-grid">
+            <div class="absensi-filter-item">
+                <label for="tanggalAbsensi">Tanggal</label>
+                <input type="date" id="tanggalAbsensi">
+            </div>
+
+            <div class="absensi-filter-item">
+                <label for="kelasAbsensi">Kelas</label>
+                <select id="kelasAbsensi" onchange="loadRekapAbsensiGuru()">
+                    <option value="">Pilih Kelas</option>
+                </select>
+            </div>
+
+            <div class="absensi-filter-actions">
+                <button type="button" onclick="loadRekapAbsensiGuru()">Tampilkan Absensi</button>
+                <button type="button" onclick="simpanSemuaAbsensiGuru()">Simpan Semua</button>
+                <button type="button" onclick="setSemuaStatus('hadir')">Tandai Semua Hadir</button>
+                <button type="button" onclick="setSemuaStatus('alpha')">Tandai Semua Alpha</button>
+                <button type="button" onclick="printAreaAbsensi()">Print Rekap Harian</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- REKAP BULANAN -->
+    <div class="school-box absensi-premium-box" style="margin-bottom:20px;">
+        <div class="school-box-head">
+            <h3>Rekap Bulanan</h3>
+        </div>
+
+        <div class="form-box absensi-filter-grid">
+            <div class="absensi-filter-item">
+                <label for="bulanRekapGuru">Bulan</label>
+                <select id="bulanRekapGuru">
+                    <option value="1">Januari</option>
+                    <option value="2">Februari</option>
+                    <option value="3">Maret</option>
+                    <option value="4">April</option>
+                    <option value="5">Mei</option>
+                    <option value="6">Juni</option>
+                    <option value="7">Juli</option>
+                    <option value="8">Agustus</option>
+                    <option value="9">September</option>
+                    <option value="10">Oktober</option>
+                    <option value="11">November</option>
+                    <option value="12">Desember</option>
+                </select>
+            </div>
+
+            <div class="absensi-filter-item">
+                <label for="tahunRekapGuru">Tahun</label>
+                <input type="number" id="tahunRekapGuru" min="2020" max="2100">
+            </div>
+
+            <div class="absensi-filter-actions">
+                <button type="button" onclick="loadBulananGuru()">Tampilkan Rekap Bulanan</button>
+                <button type="button" onclick="exportBulananGuruPDF()">Export PDF</button>
+                <button type="button" onclick="printBulananGuru()">Print Rekap Bulanan</button>
+            </div>
+        </div>
+
+        <div class="school-two-column" style="margin-top:16px;">
+            <div class="absensi-filter-item">
+                <label for="ttdWaliKelas">Nama Wali Kelas</label>
+                <input type="text" id="ttdWaliKelas" placeholder="Contoh: Judika Agung, S.Pd">
+            </div>
+
+            <div class="absensi-filter-item">
+                <label for="ttdKepalaSekolah">Nama Kepala Sekolah</label>
+                <input type="text" id="ttdKepalaSekolah" placeholder="Contoh: Budi Santoso, M.Pd">
+            </div>
+        </div>
+
+        <div class="list-box" style="margin-top:20px;">
+            <div id="printHeaderBulananGuru" class="print-only-bulanan">
+                <h2>Rekap Absensi Bulanan</h2>
+                <p id="printInfoBulananGuru">Kelas dan periode belum dipilih</p>
+            </div>
+
+            <div id="areaPrintBulananGuru" style="width:100%;">
+                <div id="rekapBulananGuruWrap" style="width:100%;">
+                    <p>Pilih kelas, bulan, dan tahun lalu klik tampilkan rekap bulanan.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GRAFIK -->
+    <div class="school-box" style="margin-bottom:20px;">
+        <div class="school-box-head">
+            <h3>Grafik Absensi Bulan Ini</h3>
+        </div>
+        <div class="list-box">
+            <div class="guru-chart-wrap">
+                <canvas id="grafikAbsensiGuru" height="120"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUMMARY HARIAN -->
+    <div class="school-stats-grid absensi-summary-grid" style="margin-bottom:20px;">
+        <div class="school-stat-card guru-stat-card absensi-summary-card total">
+            <div class="school-stat-icon">👥</div>
+            <div>
+                <h3 id="rekapTotalSiswa">0</h3>
+                <p>Total Siswa</p>
+            </div>
+        </div>
+
+        <div class="school-stat-card guru-stat-card absensi-summary-card hadir">
+            <div class="school-stat-icon">✅</div>
+            <div>
+                <h3 id="rekapHadir">0</h3>
+                <p>Hadir</p>
+            </div>
+        </div>
+
+        <div class="school-stat-card guru-stat-card absensi-summary-card izin">
+            <div class="school-stat-icon">🟡</div>
+            <div>
+                <h3 id="rekapIzin">0</h3>
+                <p>Izin</p>
+            </div>
+        </div>
+
+        <div class="school-stat-card guru-stat-card absensi-summary-card sakit">
+            <div class="school-stat-icon">🔵</div>
+            <div>
+                <h3 id="rekapSakit">0</h3>
+                <p>Sakit</p>
+            </div>
+        </div>
+
+        <div class="school-stat-card guru-stat-card absensi-summary-card alpha">
+            <div class="school-stat-icon">🔴</div>
+            <div>
+                <h3 id="rekapAlpha">0</h3>
+                <p>Alpha</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- REKAP HARIAN -->
+    <div class="school-box absensi-premium-box">
+        <div class="school-box-head">
+            <h3>Rekap Absensi Harian</h3>
+        </div>
+
+        <div class="list-box">
+            <div id="printHeaderAbsensi" class="print-only-absensi">
+                <h2>Rekap Absensi Siswa</h2>
+                <p id="printInfoAbsensi">Tanggal dan kelas belum dipilih</p>
+            </div>
+
+            <div class="absensi-table-wrap" id="areaPrintAbsensi">
+                <div id="list-absensi">
+                    <p>Pilih tanggal dan kelas terlebih dahulu.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+        <!-- PROFIL -->
+        <section id="profilTab" class="school-section" style="display:none;">
+            <div class="school-section-head">
+                <h2>Profil Saya</h2>
+                <p>Kelola nama akun dan password Anda</p>
+            </div>
+
+            <div class="school-two-column">
+                <div class="school-box">
+                    <div class="school-box-head">
+                        <h3>Data Profil</h3>
+                    </div>
+
+                    <div class="form-box">
+                        <input type="text" id="profilNamaGuru" placeholder="Nama Guru">
+                        <input type="text" id="profilUsernameGuru" placeholder="Username" readonly>
+                        <input type="text" id="profilRoleGuru" placeholder="Role" readonly>
+                        <button onclick="updateProfilGuru()">Update Profil</button>
+                    </div>
+                </div>
+
+                <div class="school-box">
+                    <div class="school-box-head">
+                        <h3>Ganti Password</h3>
+                    </div>
+
+                    <div class="form-box">
+                        <input type="password" id="passwordLamaGuru" placeholder="Password lama">
+                        <input type="password" id="passwordBaruGuru" placeholder="Password baru">
+                        <button onclick="gantiPasswordGuru()">Ganti Password</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+<script src="js/guru.js"></script>
+</body>
+</html>

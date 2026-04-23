@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Berita Sekolah | SD Harapan Sungailiat</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="news-premium-body">
+
+<section class="news-hero">
+    <div class="news-hero-overlay"></div>
+    <div class="news-hero-content">
+        <a href="index.html" class="news-back-btn">
+            <i class="fa fa-arrow-left"></i> Kembali ke Beranda
+        </a>
+
+        <div class="news-badge">
+            <i class="fa fa-newspaper"></i>
+            <span>Pusat Informasi Sekolah</span>
+        </div>
+
+        <h1>Berita & Informasi Terbaru</h1>
+        <p>
+            Ikuti perkembangan kegiatan, pengumuman, prestasi, dan berbagai informasi terbaru
+            dari SD Harapan Sungailiat.
+        </p>
+    </div>
+</section>
+
+<section class="news-page premium-news-page">
+    <div class="news-page-header">
+        <div>
+            <h2 class="news-title">Portal Berita Sekolah</h2>
+            <p class="news-subtitle">
+                Temukan berbagai berita terbaru dengan tampilan yang lebih rapi, modern, dan nyaman dibaca.
+            </p>
+        </div>
+    </div>
+
+    <div class="news-filter premium-news-filter">
+        <div class="news-filter-box">
+            <i class="fa fa-magnifying-glass"></i>
+            <input type="text" id="searchNews" placeholder="Cari berita..." onkeyup="cariBerita()">
+        </div>
+
+        <div class="news-filter-box select-box">
+            <i class="fa fa-layer-group"></i>
+            <select id="kategoriNews" onchange="filterKategori()">
+                <option value="">Semua Kategori</option>
+                <option value="Akademik">Akademik</option>
+                <option value="Olahraga">Olahraga</option>
+                <option value="Kegiatan">Kegiatan</option>
+                <option value="Pengumuman">Pengumuman</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="news-layout premium-news-layout">
+        <div class="news-left">
+            <div id="headline"></div>
+            <div id="news-list" class="premium-news-list"></div>
+            <div id="pagination" class="pagination premium-pagination"></div>
+        </div>
+
+        <aside class="news-right premium-news-right">
+            <div class="sidebar-news-card">
+                <div class="sidebar-news-head">
+                    <h3>Berita Populer</h3>
+                    <span>Top 5</span>
+                </div>
+                <div id="news-populer"></div>
+            </div>
+        </aside>
+    </div>
+</section>
+
+<script src="js/berita.js"></script>
+</body>
+</html>

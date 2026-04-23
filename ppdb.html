@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PPDB Online | SD Harapan Sungailiat</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="news-premium-body">
+
+  <nav>
+    <div class="logo">
+      <img src="img/logo.png" alt="Logo SD Harapan">
+      <h1>SD Harapan</h1>
+    </div>
+
+    <div class="menu-toggle">
+      <i class="fa fa-bars"></i>
+    </div>
+
+    <ul id="menu">
+      <li><a href="index.html"><i class="fa fa-home"></i> Beranda</a></li>
+      <li><a href="berita.html"><i class="fa fa-newspaper"></i> Berita</a></li>
+      <li><a href="ppdb.html" class="active"><i class="fa fa-user-plus"></i> PPDB</a></li>
+      <!-- <li><a href="login.html"><i class="fa fa-right-to-bracket"></i> Login</a></li> -->
+    </ul>
+  </nav>
+
+  <section class="news-hero">
+    <div class="news-hero-overlay"></div>
+    <div class="news-hero-content">
+      <a href="index.html" class="news-back-btn">
+        <i class="fa fa-arrow-left"></i> Kembali ke Beranda
+      </a>
+
+      <div class="news-badge">
+        <i class="fa fa-user-graduate"></i>
+        <span>Penerimaan Peserta Didik Baru</span>
+      </div>
+
+      <h1>PPDB Online SD Harapan Sungailiat</h1>
+      <p>
+        Isi formulir pendaftaran secara online, unggah berkas, dan cek status pendaftaran Anda dengan mudah.
+      </p>
+    </div>
+  </section>
+
+  <section class="school-section">
+    <div class="premium-form-grid-2">
+      <div class="form-box">
+        <h2>Formulir Pendaftaran</h2>
+        <p class="empty-state">Lengkapi data calon siswa dengan benar.</p>
+
+        <div class="premium-form-grid-2">
+          <input type="text" id="ppdbNama" placeholder="Nama lengkap">
+          <select id="ppdbJenisKelamin">
+            <option value="">Pilih jenis kelamin</option>
+            <option value="L">Laki-laki</option>
+            <option value="P">Perempuan</option>
+          </select>
+
+          <input type="text" id="ppdbTempatLahir" placeholder="Tempat lahir">
+          <input type="date" id="ppdbTanggalLahir">
+
+          <input type="text" id="ppdbNisn" placeholder="NISN">
+          <input type="text" id="ppdbAgama" placeholder="Agama">
+
+          <input type="text" id="ppdbNamaAyah" placeholder="Nama ayah">
+          <input type="text" id="ppdbNamaIbu" placeholder="Nama ibu">
+
+          <input type="text" id="ppdbNoHp" placeholder="No HP orang tua">
+          <input type="email" id="ppdbEmail" placeholder="Email">
+
+          <input type="text" id="ppdbAsalSekolah" placeholder="Asal sekolah">
+          <input type="text" id="ppdbPilihanKelas" placeholder="Pilihan kelas, contoh: 1A">
+        </div>
+
+        <textarea id="ppdbAlamat" placeholder="Alamat lengkap"></textarea>
+
+        <div class="premium-form-grid-2" style="margin-top:14px;">
+          <div>
+            <label>Akta Lahir</label>
+            <input type="file" id="ppdbAkta" accept=".jpg,.jpeg,.png,.pdf">
+          </div>
+          <div>
+            <label>Kartu Keluarga</label>
+            <input type="file" id="ppdbKK" accept=".jpg,.jpeg,.png,.pdf">
+          </div>
+          <div>
+            <label>Pas Foto</label>
+            <input type="file" id="ppdbFoto" accept=".jpg,.jpeg,.png,.pdf">
+          </div>
+          <div>
+            <label>Ijazah / SKL</label>
+            <input type="file" id="ppdbIjazah" accept=".jpg,.jpeg,.png,.pdf">
+          </div>
+        </div>
+
+        <button type="button" class="btn-primary" id="btnKirimPPDB" onclick="kirimPPDB()">Kirim Pendaftaran</button>
+
+        <div id="hasilPPDB" style="margin-top:16px;"></div>
+      </div>
+
+      <div class="form-box">
+        <h2>Cek Status Pendaftaran</h2>
+        <p class="empty-state">Masukkan nomor pendaftaran untuk melihat status terbaru.</p>
+
+        <input type="text" id="cekNoPendaftaran" placeholder="Contoh: PPDB2026-0001">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+    <button type="button" class="btn-primary" onclick="cekStatusPPDB(event)">Cek Status</button>
+</div>
+
+<div id="ppdbActionButtons" style="margin-top:12px;"></div>
+
+        <div id="hasilCekPPDB" style="margin-top:16px;"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/ppdb.js"></script>
+</body>
+</html>
