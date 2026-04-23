@@ -19,6 +19,9 @@ function togglePassword() {
     }
 }
 
+// ================= CONFIG API =================
+const BASE_URL = "https://backend-sekolah-production-e347.up.railway.app";
+
 // ================= CEK LOGIN SAAT HALAMAN DIBUKA =================
 window.addEventListener("pageshow", function () {
     const isLogin = localStorage.getItem("login") === "true";
@@ -52,7 +55,7 @@ async function login() {
     }
 
     try {
-        const res = await fetch("http://localhost:3000/login", {
+        const res = await fetch(`${BASE_URL}/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -83,7 +86,7 @@ async function login() {
         alert(data.message || "Username atau password salah!");
     } catch (err) {
         console.error("Login error:", err);
-        alert("Server error!");
+        alert("Gagal terhubung ke server backend!");
     } finally {
         if (btn) {
             btn.innerText = "Login";

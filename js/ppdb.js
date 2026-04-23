@@ -1,4 +1,4 @@
-const PPDB_BASE_URL = "http://localhost:3000";
+const PPDB_BASE_URL = "https://backend-sekolah-production-e347.up.railway.app";
 
 // ================= HELPER =================
 function ppdbEscapeHtml(text) {

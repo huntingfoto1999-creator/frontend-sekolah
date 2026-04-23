@@ -4,13 +4,12 @@ let dataTampil = [];
 let currentPage = 1;
 const perPage = 3;
 
+const BASE_URL = "https://backend-sekolah-production-e347.up.railway.app";
+
 async function load() {
     try {
-        const res = await fetch("http://localhost:3000/berita");
+        const res = await fetch(`${BASE_URL}/berita`);
         semuaData = await res.json();
-
-        console.log("DATA BERITA:", semuaData);
-
         dataTampil = semuaData;
         tampilkan();
     } catch (err) {
@@ -27,7 +26,7 @@ function getImageUrl(gambar) {
         return gambar;
     }
 
-    return `http://localhost:3000/uploads/${gambar}`;
+    return `${BASE_URL}/uploads/${gambar}`;
 }
 
 function tampilkan() {

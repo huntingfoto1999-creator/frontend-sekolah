@@ -1,3 +1,5 @@
+const BASE_URL = "https://backend-sekolah-production-e347.up.railway.app";
+
 function getDetailImage(gambar) {
     if (!gambar) {
         return "https://via.placeholder.com/1200x700?text=No+Image";
@@ -7,23 +9,7 @@ function getDetailImage(gambar) {
         return gambar;
     }
 
-    return `http://localhost:3000/uploads/${gambar}`;
-}
-
-function renderEmpty(message = "Data berita tidak tersedia atau belum dipilih.") {
-    const detail = document.getElementById("detail");
-    if (!detail) return;
-
-    detail.innerHTML = `
-        <div class="detail-empty-state">
-            <div class="detail-empty-card">
-                <i class="fa fa-circle-exclamation"></i>
-                <h2>Berita tidak ditemukan</h2>
-                <p>${message}</p>
-                <a href="berita.html" class="btn">Kembali ke Halaman Berita</a>
-            </div>
-        </div>
-    `;
+    return `${BASE_URL}/uploads/${gambar}`;
 }
 
 async function loadDetail() {
@@ -39,7 +25,7 @@ async function loadDetail() {
     }
 
     try {
-        const res = await fetch(`http://localhost:3000/berita/${id}`);
+        const res = await fetch(`${BASE_URL}/berita/${id}`);
         const data = await res.json();
 
         if (!res.ok) {
@@ -87,3 +73,19 @@ async function loadDetail() {
 }
 
 loadDetail();
+
+function renderEmpty(message = "Data berita tidak tersedia atau belum dipilih.") {
+    const detail = document.getElementById("detail");
+    if (!detail) return;
+
+    detail.innerHTML = `
+        <div class="detail-empty-state">
+            <div class="detail-empty-card">
+                <i class="fa fa-circle-exclamation"></i>
+                <h2>Berita tidak ditemukan</h2>
+                <p>${message}</p>
+                <a href="berita.html" class="btn">Kembali ke Halaman Berita</a>
+            </div>
+        </div>
+    `;
+}
