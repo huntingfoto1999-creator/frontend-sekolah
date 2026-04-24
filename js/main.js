@@ -492,6 +492,29 @@ if (contactForm) {
     });
 }
 
+async function loadStatistikReal() {
+    try {
+        const res = await fetch("https://backend-sekolah-production-e347.up.railway.app/statistik-public");
+        const data = await res.json();
+
+        if (!res.ok) {
+            throw new Error(data.message || "Gagal ambil statistik");
+        }
+
+        const statSiswa = document.getElementById("statSiswa");
+        const statGuru = document.getElementById("statGuru");
+        const statPrestasi = document.getElementById("statPrestasi");
+        const statTahun = document.getElementById("statTahun");
+
+        if (statSiswa) statSiswa.textContent = `${data.total_siswa}+`;
+        if (statGuru) statGuru.textContent = data.total_guru;
+        if (statPrestasi) statPrestasi.textContent = `${data.total_berita}+`;
+        if (statTahun) statTahun.textContent = data.tahun_berdiri;
+    } catch (err) {
+        console.error("Gagal load statistik:", err);
+    }
+}
+
 // ================= LOAD SEMUA =================
 loadBerita();
 loadPengumumanPublik();
@@ -499,3 +522,4 @@ loadAgendaPublik();
 loadWebsiteProfile();
 loadGuru();
 loadGaleri();
+loadStatistikReal();
