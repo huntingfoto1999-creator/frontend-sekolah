@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://backend-sekolah-production-e347.up.railway.app";
 
 function apiUrl(path = "") {
     return `${BASE_URL}${path}`;

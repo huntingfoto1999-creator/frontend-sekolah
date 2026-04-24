@@ -99,12 +99,12 @@ function getBeritaImage(gambar) {
         return gambar;
     }
 
-    return `http://localhost:3000/uploads/${gambar}`;
+   return `https://backend-sekolah-production-e347.up.railway.app/uploads/${gambar}`;
 }
 
 async function loadBerita() {
     try {
-        const res = await fetch("http://localhost:3000/berita");
+        const res = await fetch("https://backend-sekolah-production-e347.up.railway.app/berita")
         const data = await res.json();
 
         beritaData = Array.isArray(data) ? data : [];
@@ -171,7 +171,7 @@ function filterKategori() {
 // ================= PENGUMUMAN PUBLIK =================
 async function loadPengumumanPublik() {
     try {
-        const res = await fetch("http://localhost:3000/pengumuman");
+        const res = await fetch("https://backend-sekolah-production-e347.up.railway.app/pengumuman");
         const data = await res.json();
 
         const containerPengumuman = document.getElementById("pengumuman-list");
@@ -204,7 +204,7 @@ async function loadPengumumanPublik() {
 // ================= AGENDA PUBLIK =================
 async function loadAgendaPublik() {
     try {
-        const res = await fetch("http://localhost:3000/agenda");
+        const res = await fetch("https://backend-sekolah-production-e347.up.railway.app/agenda");
         const data = await res.json();
 
         const containerAgenda = document.getElementById("agenda-list");
@@ -264,7 +264,7 @@ function renderMisi(misiText) {
 
 async function loadWebsiteProfile() {
     try {
-        const res = await fetch("http://localhost:3000/website-profile");
+        const res = await fetch("https://backend-sekolah-production-e347.up.railway.app/website-profile");
         const data = await res.json();
 
         if (!res.ok) {
@@ -325,7 +325,7 @@ function tampilGuru() {
 
     dataGuru.forEach(g => {
         const foto = g.foto
-            ? "http://localhost:3000/uploads/" + g.foto
+            ? "https://backend-sekolah-production-e347.up.railway.app/uploads/" + g.foto
             : "https://via.placeholder.com/300x300?text=No+Photo";
 
         guruContainer.innerHTML += `
@@ -351,7 +351,7 @@ function tampilGuru() {
 
 async function loadGuru() {
     try {
-        const res = await fetch("http://localhost:3000/guru");
+        const res = await fetch("https://backend-sekolah-production-e347.up.railway.app/guru");
         dataGuru = await res.json();
         tampilGuru();
     } catch (err) {
@@ -375,7 +375,7 @@ function tampilGaleri() {
 
     dataGaleri.forEach(item => {
         const gambarUrl = item.gambar
-            ? `http://localhost:3000/uploads/${item.gambar}`
+            ? `https://backend-sekolah-production-e347.up.railway.app/uploads/${item.gambar}`
             : "https://via.placeholder.com/300x200?text=No+Image";
 
         galeriContainer.innerHTML += `
@@ -397,7 +397,7 @@ function tampilGaleri() {
 
 async function loadGaleri() {
     try {
-        const res = await fetch("http://localhost:3000/galeri");
+        const res = await fetch("https://backend-sekolah-production-e347.up.railway.app/galeri");
         dataGaleri = await res.json();
         tampilGaleri();
     } catch (err) {
@@ -459,7 +459,7 @@ if (contactForm) {
                 btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Mengirim...';
             }
 
-            const res = await fetch("http://localhost:3000/pesan", {
+            const res = await fetch("https://backend-sekolah-production-e347.up.railway.app/pesan", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
